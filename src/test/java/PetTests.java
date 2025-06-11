@@ -13,7 +13,7 @@ public class PetTests extends BaseTest {
 
     int petId = 987654321;
 
-    @Test(description = "Create a new pet")
+    @Test(description = "Create a new pet", priority = 1)
     @Severity(SeverityLevel.CRITICAL)
     @Story("Create a new pet")
     @Description("Creates a new pet with a given ID and name, and verifies creation.")
@@ -33,7 +33,7 @@ public class PetTests extends BaseTest {
                 .statusCode(200);
     }
 
-    @Test(description = "Get pet by ID")
+    @Test(description = "Get pet by ID", priority = 2)
     @Severity(SeverityLevel.NORMAL)
     @Story("Get pet details")
     @Description("Fetches the pet details using petId.")
@@ -47,7 +47,7 @@ public class PetTests extends BaseTest {
                 .statusCode(200);
     }
 
-    @Test(description = "Update pet details")
+    @Test(description = "Update pet details", priority = 3)
     @Severity(SeverityLevel.CRITICAL)
     @Story("Update pet")
     @Description("Updates the pet's name and status.")
@@ -67,7 +67,7 @@ public class PetTests extends BaseTest {
                 .statusCode(200);
     }
 
-    @Test(description = "Delete pet by ID")
+    @Test(description = "Delete pet by ID", priority = 4)
     @Severity(SeverityLevel.NORMAL)
     @Story("Delete pet")
     @Description("Deletes the pet with the specified ID.")

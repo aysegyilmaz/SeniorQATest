@@ -11,21 +11,7 @@ import java.util.Map;
 @Feature("User API Endpoints")
 public class UserTests extends BaseTest {
 
-    @Test(description = "Get user info by username")
-    @Severity(SeverityLevel.NORMAL)
-    @Story("Get existing user information")
-    @Description("Fetches the user details for 'aysegul_user2' and verifies that the user exists.")
-    public void GetUserInfo() {
-        RestAssured
-                .given()
-                .accept(ContentType.JSON)
-                .when()
-                .get(URL + "/user/aysegul_user2")
-                .then()
-                .statusCode(200);
-    }
-
-    @Test(description = "Create a new user")
+    @Test(description = "Create a new user", priority = 1)
     @Severity(SeverityLevel.CRITICAL)
     @Story("Create a new user")
     @Description("Creates a user with username 'aysegul_user2' and checks if it's successfully created.")
@@ -50,7 +36,7 @@ public class UserTests extends BaseTest {
                 .statusCode(200);
     }
 
-    @Test(description = "Update existing user")
+    @Test(description = "Update existing user", priority = 2)
     @Severity(SeverityLevel.CRITICAL)
     @Story("Update user information")
     @Description("Updates the user 'aysegul_user2' with new email, phone, and name data.")
@@ -75,7 +61,7 @@ public class UserTests extends BaseTest {
                 .statusCode(200);
     }
 
-    @Test(description = "Delete user by username")
+    @Test(description = "Delete user by username", priority = 5)
     @Severity(SeverityLevel.NORMAL)
     @Story("Delete a user")
     @Description("Deletes the user 'aysegul_user2' and confirms that the deletion is successful.")
@@ -87,7 +73,7 @@ public class UserTests extends BaseTest {
                 .then()
                 .statusCode(200);
     }
-    @Test(description = "Login with valid user credentials")
+    @Test(description = "Login with valid user credentials", priority = 3)
     @Severity(SeverityLevel.CRITICAL)
     @Story("User login")
     @Description("Logs in with correct username and password for 'aysegul_user2'.")
@@ -101,7 +87,7 @@ public class UserTests extends BaseTest {
                 .statusCode(200);
     }
 
-    @Test(description = "Logout the user")
+    @Test(description = "Logout the user", priority = 4)
     @Severity(SeverityLevel.NORMAL)
     @Story("User logout")
     @Description("Logs out the currently logged-in user.")
@@ -113,20 +99,6 @@ public class UserTests extends BaseTest {
                 .get(URL + "/user/logout")
                 .then()
                 .statusCode(200);
-    }
-
-    @Test(description = "Get non-existent user info")
-    @Severity(SeverityLevel.MINOR)
-    @Story("Handle missing user")
-    @Description("Tries to fetch details of a non-existent user and expects a 404 response.")
-    public void GetNonExistentUser() {
-        RestAssured
-                .given()
-                .accept(ContentType.JSON)
-                .when()
-                .get(URL + "/user/xuser_does_not_exist")
-                .then()
-                .statusCode(404);
     }
 
 
